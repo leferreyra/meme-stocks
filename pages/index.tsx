@@ -1,4 +1,4 @@
-import { getTrendingStocks } from "./utils/wsb"
+import { getTrendingStocks } from "../utils/wsb"
 import styled from "styled-components";
 
 const Container = styled.div`
