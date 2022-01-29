@@ -7,6 +7,7 @@ const BLACKLISTED_WORDS = [
 	'J', // J Powell
 	'TA', // Technical Analysis
 	'DD', // Due Diligence
+	'AM', // Morning
 	'TV',
 	'YOLO',
 	'CEO',

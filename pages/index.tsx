@@ -1,5 +1,6 @@
+import Head from "next/head"
 import { getTrendingStocks } from "../utils/wsb"
-import styled from "styled-components";
+import styled from "styled-components"
 
 const Container = styled.div`
 	max-width: 900px;
@@ -16,6 +17,7 @@ const Hero = styled.div`
 	}
 
 	h1 {
+		font-weight: bold;
 		font-size: 80px;
 	}
 
@@ -26,6 +28,38 @@ const Hero = styled.div`
 	a {
 		color: #0099ff;
 	}
+
+	@media (max-width: 574px) {
+
+		padding: 80px 0;
+
+		h1 {
+			font-size: 60px;
+		}
+
+		p {
+			font-size: 20px;
+		}
+	}
+
+	@media (max-width: 460px) {
+		h1 {
+			font-size: 50px;
+		}
+	}
+
+	@media (max-width: 390px) {
+
+		padding: 40px 0;
+
+		h1 {
+			font-size: 40px;
+		}
+
+		p {
+			font-size: 18px;
+		}
+	}
 `;
 
 const Grid = styled.div`
@@ -35,13 +69,17 @@ const Grid = styled.div`
 `;
 
 const Card = styled.div`
-	font-size: 50px;
-	font-weight: bold;
+	display: flex;
 	padding: 40px;
 	border: 1px solid #CCC;
 	border-radius: 15px;
-	color: #444;
 	transition: all 0.2s ease-in-out;
+	position: relative;
+	overflow: hidden;
+	color: #555;
+	font-size: 50px;
+	font-weight: bold;
+	cursor: pointer;
 
 	&:hover {
 		border: 1px solid #AAA;
@@ -49,9 +87,17 @@ const Card = styled.div`
 	}
 `;
 
+const Ranking = styled.span`
+	color: #DDD;
+	margin-right: 10px;
+`;
+
 export default function Home({ stocks }) {
 	return (
 		<Container>
+			<Head>
+				<title>Meme Stocks | Trending stocks from the wallstreetbets subreddit</title>
+			</Head>
 			<Hero>
 				<h1>Meme Stocks</h1>
 				<p>
@@ -59,10 +105,17 @@ export default function Home({ stocks }) {
 				</p>
 			</Hero>
 			<Grid>
-				{stocks.map(stock => (
-					<Card key={stock.symbol.symbol}>
-						{stock.symbol.symbol}
-					</Card>
+				{stocks.map((stock, idx) => (
+					<a
+						key={stock.symbol.symbol}
+						target="_blank"
+						rel="noreferrer"
+						href={`https://www.reddit.com/r/wallstreetbets/search/?q=${stock.symbol.symbol}&restrict_sr=1&sr_nsfw=k`}>
+						<Card>
+							<Ranking>#{idx + 1}</Ranking>
+							{stock.symbol.symbol}
+						</Card>
+					</a>
 				))}
 			</Grid>
 		</Container>
