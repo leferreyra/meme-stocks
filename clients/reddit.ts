@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import pick from 'lodash.pick';
 
 const BASE_URL = "https://www.reddit.com"
 
@@ -54,5 +55,7 @@ export async function getSubredditPages({ pages = 10, ...rest }: GetSubredditPag
 		after = data.after;
 	}
 	
-	return posts;
+	return posts.map(post => ({
+		data: pick(post.data, ['title', 'score', 'num_comments'])
+	}));
 }

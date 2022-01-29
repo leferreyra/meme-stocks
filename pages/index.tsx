@@ -22,6 +22,10 @@ const Hero = styled.div`
 	p {
 		font-size: 30px;
 	}
+
+	a {
+		color: #0099ff;
+	}
 `;
 
 const Grid = styled.div`
@@ -50,7 +54,9 @@ export default function Home({ stocks }) {
 		<Container>
 			<Hero>
 				<h1>Meme Stocks</h1>
-				<p>Trending stocks from the /r/wallstreetbets subreddit</p>
+				<p>
+					Trending stocks from the <a href="https://www.reddit.com/r/wallstreetbets/" target="_blank" rel="noreferrer">/r/wallstreetbets</a> subreddit
+				</p>
 			</Hero>
 			<Grid>
 				{stocks.map(stock => (
