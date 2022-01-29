@@ -8,8 +8,11 @@ const BLACKLISTED_WORDS = [
 	'TA', // Technical Analysis
 	'DD', // Due Diligence
 	'AM', // Morning
+	'MJ',
 	'TV',
+	'PT',
 	'YOLO',
+	'COOL',
 	'CEO',
 	'USD',
 ].reduce((map, word) => {
