@@ -1,4 +1,5 @@
 import Head from "next/head"
+import NextScript from "next/script"
 import { getTrendingStocks } from "../utils/wsb"
 import styled from "styled-components"
 
@@ -97,6 +98,21 @@ export default function Home({ stocks }) {
 		<Container>
 			<Head>
 				<title>Meme Stocks | Trending stocks from the wallstreetbets subreddit</title>
+
+				<script async src="https://www.googletagmanager.com/gtag/js?id=G-E858XT1XWR"></script>
+
+				<script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-E858XT1XWR', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
 			</Head>
 			<Hero>
 				<h1>Meme Stocks</h1>
